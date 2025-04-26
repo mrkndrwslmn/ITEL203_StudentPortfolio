@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Daniella Azucena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('cute.jpg') no-repeat center center/cover;
+                       transition: filter 0.5s ease-in-out;
+            z-index: -1;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.5s;
+            cursor: pointer;
+        }
+	.img{
+	width: 50px;
+	height: 50px;
+	}
+        .content.active {
+            background: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="bg"></div>
+    <div class="content" id="infoBox" onclick="clearBackground()">
+        <h1>Daniella Azucena</h1>
+        <p><strong>Age:</strong> 15</p>
+        <p><strong>Status:</strong> Single</p>
+        <p><strong>Location:</strong> Majayjay, Laguna</p>
+        <p><strong>Birthdate:</strong> April 25, 2009</p>
+        <p><strong>Hobbies:</strong> Playing guitar and reading books</p>
+    </div>
+	<img style= width:"500px"; height= "500px"; src= "shann.jpg", alt="picture">
+
+    <script>
+        function clearBackground() {
+            document.getElementById("bg").style.filter = "blur(0px)";
+            document.getElementById("infoBox").classList.add("active");
+        }
+    </script>
+</body>
+</html>

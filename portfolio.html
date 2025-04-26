@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Masters</title>
+    <link href= "https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+            transition: opacity 1s ease-in-out;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            }
+            .header-container {
+            position: absolute;
+            top: 50%; /* Adjust the position */
+            left: 50%;
+            width:50%;
+            height: 200px;
+            border:1px solid white;
+            backdrop-filter: blur(40px);
+            border-radius: 10px;
+            transform: translate(-50%, -50%); /* Center the container */
+            display: flex;
+            flex-direction: column; /* Stack logo and header vertically */
+            align-items: center; /* Center the items horizontally */
+            z-index: 2;
+            justify-content: center;
+        }
+
+
+            .header {
+                font-family: 'Lexend Mega'; /* Minimalist sans-serif font */
+                text-transform: uppercase; /* Uppercase for a sleek look */
+                font-size: 3em; /* Font size for the heading */
+                color: #ffffff;
+                opacity: 0.9;
+                text-align: center;
+                letter-spacing: 1px; /* Slight letter-spacing for a modern look */
+            }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            width:25%;
+            align-items: center;
+            position: absolute;
+            left:0;
+            bottom:0;
+            gap: 1px;
+        }
+
+        .image-section {
+            position: relative;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        .image-wrapper {
+            position: relative;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid white;
+            
+        }
+
+        .image-wrapper .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bubble {
+            position: absolute;
+            top: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            padding: 10px 15px;
+            max-width: 100px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 2s ease-out, visibility 1s 2s;
+            z-index: 3;
+            
+        }
+
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #f1f1f1;
+        }
+
+        @keyframes bubbleAnimation {
+            0% {
+                opacity: 0;
+                visibility: hidden;
+            }
+            10% {
+                opacity: 1;
+                visibility: visible;
+            }
+            70% {
+                opacity: 1;
+                visibility: visible;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <video muted loop id="background-video" autoplay>
+        <source src="bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="header-container">
+        <div class="header">BYTE MASTERS</div>
+    </div>
+
+    <div class="image-container">
+        <div class="image-section">
+            <div class="image-wrapper" id="image1">
+                <img src="shann.jpg" alt="Image 1" class="image">
+            </div>
+            <div class="bubble bubble1">Hoyyyyyy!</div>
+            <div class="bubble bubble2">Grabe ka na teh!</div>
+            <div class="bubble bubble3">Kain tayo jollibee!</div>
+            <div class="bubble bubble4">Pogi ng b0yfriend ko!</div>
+            <div class="bubble bubble5">Gusto ko 'yung gan'yan eh!</div>
+        </div>
+
+        <div class="image-section">
+            <div class="image-wrapper" id="image2">
+                <img src="sofia.jpg" alt="Image 2" class="image">
+            </div>
+            <div class="bubble bubble1">Hehe</div>
+            <div class="bubble bubble2">Magtitipid na tayo!</div>
+            <div class="bubble bubble3">Ikaw na yan eh!</div>
+            <div class="bubble bubble4">Last na 'to.</div>
+            <div class="bubble bubble5">Loyal, talking stage pa lang. Eyyy!</div>
+        </div>
+
+        <div class="image-section">
+            <div class="image-wrapper" id="image3">
+                <img src="albert.jpg" alt="Image 3" class="image">
+            </div>
+            <div class="bubble bubble1">ML, 5 man!</div>
+            <div class="bubble bubble2">Inom tayo!</div>
+            <div class="bubble bubble3">Sige.</div>
+            <div class="bubble bubble4">Oo nga.</div>
+            <div class="bubble bubble5">Saan tayo mag-iinom?</div>
+        </div>
+
+        <div class="image-section">
+            <div class="image-wrapper" id="image4">
+                <img src="lena.jpg" alt="Image 4" class="image">
+            </div>
+            <div class="bubble bubble1">May assignment tayo.</div>
+            <div class="bubble bubble2">Huyyyy 'wag gan'yan.</div>
+            <div class="bubble bubble3">Ano magandang pabango?</div>
+            <div class="bubble bubble4">Sige lang, sama ako.</div>
+            <div class="bubble bubble5">"Wag kayo maingay!</div>
+        </div>
+
+        <div class="image-section">
+            <div class="image-wrapper" id="image5">
+                <img src="mark.jpg" alt="Image 5" class="image">
+            </div>
+            <div class="bubble bubble1">Ako na 'to eh!</div>
+            <div class="bubble bubble2">Very latenaaaaa!</div>
+            <div class="bubble bubble3">'Di mo kaya!</div>
+            <div class="bubble bubble4">Ang pogi niya ngayon!</div>
+            <div class="bubble bubble5">Feeling ko talaga crush niya ako!</div>
+        </div>
+    </div>
+
+    <script>
+        // Automatically display bubbles with fade-in and fade-out effect
+        window.onload = () => {
+            const bubbles = document.querySelectorAll('.image-section');
+            bubbles.forEach((section) => {
+                const bubbleElements = section.querySelectorAll('.bubble');
+                let delay = 0;
+
+                bubbleElements.forEach((bubble, bubbleIndex) => {
+                    setTimeout(() => {
+                        bubble.style.visibility = 'visible';
+                        bubble.style.opacity = '1';
+                    }, delay); // Show the bubble after the specified delay
+
+                    setTimeout(() => {
+                        bubble.style.visibility = 'hidden';
+                        bubble.style.opacity = '0';
+                    }, delay + 4000); // Hide the bubble after 4 seconds
+
+                    delay += 5000; // Increase delay to avoid overlap
+                });
+            });
+        };
+
+        // Fade out the page before transitioning to the next page
+        function fadeOutPage() {
+            document.body.classList.add('fade-out'); // Add fade-out class
+            setTimeout(() => {
+                window.location.href = "nextpage.html"; // Change this URL to your next page
+            }, 1000); // Wait for the fade-out to finish before navigating
+        }
+
+        // When you click on the background (video), transition to the next page
+        document.body.addEventListener('click', (event) => {
+            if (event.target === document.body || event.target === document.getElementById('background-video')) {
+                fadeOutPage();
+            }
+        });
+    </script>
+</body>
+</html>

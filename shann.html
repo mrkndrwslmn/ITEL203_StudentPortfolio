@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Princess Azucena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Canva+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lexend Mega';
+      margin: 0;
+      padding: 0;
+      background-color: #14213d;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 2;
+    }
+
+    .back-button img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .video-container {
+      width: 100%;
+      height: 70vh;
+      position: relative;
+      overflow: visible;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      animation: fadeInText 3s ease-in-out forwards;
+      z-index: 3;
+    }
+
+    .circle-image-container {
+      position: absolute;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      overflow: hidden;
+      width: 250px;
+      height: 250px;
+      border: 3px solid #fff;
+      z-index: 1;
+    }
+
+    .circle-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .personal-info {
+      margin-top: 120px;
+      width: 50%;
+      max-width: 1000px;
+      border: 1px solid white;
+      background-color: #1d3557;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+
+    .personal-info h1 {
+      text-align: center;
+      font-size: 32px;
+    }
+
+    .personal-info p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .container-sections {
+      display: flex;
+      justify-content: space-around;
+      gap: 5px;
+      width: 100%;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      background-color: #1d3557;
+      padding: 10px;
+      border: 1px solid white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      color: white;
+      text-align: center;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section h2 {
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+
+    .skills-container, .projects-container, .experience-container, .education-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .section-item {
+      background-color: #457b9d;
+      width: 250px;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid white;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .section-item h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+      padding: 0;
+    }
+
+    .hobbies-section {
+      margin-top: 50px;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .hobbies-section h2 {
+      font-size: 32px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .hobbies-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .hobby-item {
+      position: relative;
+      border: 1px solid white;
+      width: 50%;
+      height: 200px;
+      background-color: #555;
+      overflow: hidden;
+      border-radius: 10px;
+      transform: translateX(0);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hobby-item:hover {
+      transform: scale(1.05);
+    }
+
+    .hobby-item:nth-child(even) {
+      animation-name: slideInRight;
+      animation-duration: 10s;
+    }
+
+    .hobby-item:nth-child(odd) {
+      animation-name: slideInLeft;
+      animation-duration: 10s;
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .hobby-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hobby-text {
+      position: absolute;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      display: none;
+      text-align: center;
+    }
+
+    .hobby-item:hover .hobby-text {
+      display: block;
+    }
+
+    /* Contact Info Box */
+    .contact-box {
+      display: flex;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 50px;
+      width: 500px;
+      height: 50px;
+      border: 1px solid white;
+      background-color: #1d3557;
+      align-items: justify;
+      justify-content: center;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      justify-content: center;
+      border: 1px solid white;
+      background-color: #383636;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: white;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .email {
+      background-color: #007BFF;
+    }
+
+    .phone {
+      background-color: #28a745;
+    }
+
+    .facebook {
+      background-color: #3b5998;
+    }
+
+    .instagram {
+      background-color: #E4405F;
+    }
+
+    .github {
+      background-color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        width: 100%;
+      }
+      .contact-box {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-box {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Section -->
+  <div class="video-container">
+    <a href="nextpage.html" class="back-button">
+      <img src="delete.png" alt="Back Button">
+    </a>
+    <video autoplay muted loop>
+      <source src="shann.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-text">Hi, I'm Shann, a web developer!</div>
+    <div class="circle-image-container">
+      <img src="shann.jpg" alt="Shann Image">
+    </div>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="personal-info">
+    <h1>PERSONAL INFORMATION</h1>
+    <p><strong>Name:</strong> Princess Anne B. Azucena</p>
+    <p><strong>Age:</strong> 21 y/o</p>
+    <p><strong>Birthday:</strong> March 15, 2004</p>
+    <p><strong>Gender:</strong> Female</p>
+    <p><strong>Address:</strong> Barangay Bukal Majayjay, Laguna</p>
+    <p><strong>Status:</strong> Single</p>
+  </div>
+
+  <!-- Sections -->
+  <div class="container-sections">
+    <!-- Education Section -->
+    <div class="section">
+      <img src="graduation.png" alt="Education Icon" style="width:40px; height: 40px; margin-bottom: 20px;">
+      <div class="education-container">
+        <div class="section-item">
+          <h3>ELEMENTARY</h3>
+          <p>Graduated Valedictorian in Bukal Elementary School</p>
+        </div>
+        <div class="section-item">
+          <h3>HIGH SCHOOL</h3>
+          <p>Graduated with honors in Sta. Catalina Integrated National High School</p>
+          <p>Graduated senior high in Laguna Senior High School</p>
+        </div>
+        <div class="section-item">
+          <h3>COLLEGE</h3>
+          <p>Currently studying BSIT in Laguna States Polythecnic University</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="section">
+      <img src="skills.png" alt="Skills Icon" style="width:30px; height: 30px; margin-bottom: 20px;">
+      <div class="skills-container">
+        <div class="section-item">Front-end developing</div>
+        <div class="section-item">Flexibility</div>
+        <div class="section-item">Critical Thinking</div>
+        <div class="section-item">Time Managing</div>
+      </div>
+    </div>
+
+    <!-- Experience Section -->
+    <div class="section">
+      <img src="suitcase.png" alt="Experience Icon" style="width:30px; height: 30px; margin-bottom: 20px;">
+      <div class="experience-container">
+        <div class="section-item">
+          <h3>BARISTA</h3>
+          <p>Worked as barista in Brewvery.</p>
+        </div>
+        <div class="section-item">
+          <h3>COOK & CREW</h3>
+          <p>Worked as crew and cook in AZ wings.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="section">
+      <img src="layers.png" alt="Projects Icon" style="width:30px; height: 30px; margin-bottom: 20px;">
+      <div class="projects-container">
+        <div class="section-item">
+          <h3>PORTFOLIO WEBSITE</h3>
+          <p>A site for personal information. (HTML, CSS, Javascript)</p>
+        </div>
+        <div class="section-item">
+          <h3>UNIMERCE</h3>
+          <p>A multi-vendor e-commerce platform. (UI design on Canva)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hobbies Section -->
+  <div class="hobbies-section">
+    <h2>HOBBIES/INTERESTS</h2>
+    <div class="hobbies-container">
+      <div class="hobby-item">
+        <img src="eating.jpg" alt="Eating">
+        <div class="hobby-text">Eating</div>
+      </div>
+      <div class="hobby-item">
+        <img src="story.jpg" alt="Creating Stories">
+        <div class="hobby-text">Loves Creating Stories</div>
+      </div>
+      <div class="hobby-item">
+        <img src="ML.jpg" alt="Gaming">
+        <div class="hobby-text">Playing Online Games</div>
+      </div>
+      <div class="hobby-item">
+        <img src="reading.jpg" alt="Reading">
+        <div class="hobby-text">Reading Novel Books</div>
+      </div>
+      <div class="hobby-item">
+        <img src="chess.jpg" alt="Chess">
+        <div class="hobby-text">Playing Chess</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT/SOCIAL MEDIA -->
+  <h1 style="margin-top:50px;">CONTACT/SOCIAL MEDIA</h1>
+  <div class="contact-box">
+    <!-- Email -->
+    <div class="contact-item email" onclick="copyToClipboard('ceaneazucena@gmail.com')">
+      <img src="gmail.png" alt="Email Icon" style="height: 30px; width: 30px;"> 
+    </div>
+
+    <!-- Phone -->
+    <div class="contact-item phone" onclick="copyToClipboard('+639654162259')">
+      <img src="phone.png" alt="Phone Icon" style="height: 30px; width: 30px;">
+      
+    </div>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/princessanne.balalaazucena/" target="_blank" style="text-decoration: none; ">
+      <div class="contact-item facebook">
+        <img src="facebook.png" alt="Facebook Icon" style="height: 30px; width: 30px;">
+        
+      </div>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/shobe_zn/" target="_blank" style="text-decoration: none;">
+      <div class="contact-item instagram">
+        <img src="instagram.png" alt="Instagram Icon" style="height: 30px; width: 30px;">
+      </div>
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/shannqtie" target="_blank" style="text-decoration: none;">
+      <div class="contact-item github">
+        <img src="github.png" alt="GitHub Icon" style="height: 30px; width: 30px;">
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Copy to Clipboard Script -->
+  <script>
+    function copyToClipboard(text) {
+      var tempTextArea = document.createElement('textarea');
+      tempTextArea.value = text;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempTextArea);
+      alert("Copied to clipboard: " + text);
+    }
+  </script>
+
+</body>
+</html>
